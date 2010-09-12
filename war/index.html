@@ -1,35 +1,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>OauthExample</title>
+<title>appengine-marketplace-example</title>
 </head>
 <body>
-<h1>OAuth関連のサンプル</h1>
-<h2>アクセストークンの取得</h2>
-<form action="oauthExample" method="post" target="_blank">
-<p>consumerKey: <input type="text" name="consumerKey" size="75" value="anonymous" /></p>
-<p>consumerSecret: <input type="text" name="consumerSecret" size="75" value="anonymous" /></p>
-<p><input type="submit" /><input type="reset" /></p>
-</form>
+<h1>appengine-marketplace-example</h1>
 
-<h2>コンタクトグループを取得する(3LO)</h2>
-<form action="contacts?mode=3lo" method="post" target="_blank">
-<p>consumerKey: <input type="text" name="consumerKey" size="75" value="anonymous" /></p>
-<p>consumerSecret: <input type="text" name="consumerSecret" size="75" value="anonymous" /></p>
-<p>accessToken: <input type="text" name="accessToken" size="75" /></p>
-<p>accessSecret: <input type="text" name="accessSecret" size="75" /></p>
-<p>email <input type="text" name="email" size="75" /></p>
-<p><input type="submit" /><input type="reset" /></p>
-</form>
+<ul>
+<li><a href="https://www.google.com/enterprise/marketplace/viewListing?productListingId=3614+4470691757565222140">link to marketplace(for Google Apps administrator)</a></li>
+<li><a href="http://github.com/shin1ogawa/appengine-marketplace-example">Source code</a></li>
+</ul>
 
-<h2>コンタクトグループを取得する(2LO)</h2>
-<form action="contacts?mode=2lo" method="post" target="_blank">
-<p>consumerKey: <input type="text" name="consumerKey" size="75" value="web-greed.com" /></p>
-<p>consumerSecret: <input type="text" name="consumerSecret" size="75" value="bfx95gzhVXKS4x2Ei/4rjBHv" /></p>
-<p>requestorId <input type="text" name="requestorId" size="75" value="yamada.taro@web-greed.com" /></p>
-<p>email <input type="text" name="email" size="75" value="yamada.taro@web-greed.com" /></p>
-<p><input type="submit" /><input type="reset" /></p>
-</form>
+<h2>Go toppage</h2>
+<div><form action="TopPage" method="get">
+<p><label>your domain: </label><input type="text" name="domain" size="75" /><input type="submit" value="toppage" /></p>
+</form></div>
 
 </body>
 </html>
