@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009">
+  <!--
+    1. replace "yourappid" to your application id in appengine.
+    2. replace "yourappname" to your application name. 
+  -->
+  <Support>
+    <!-- note:
+      Issue 3393: OpenID doesn't work with SSL.
+      http://code.google.com/p/googleappengine/issues/detail?id=3393
+    -->
+    <Link rel="setup" href="http://yourappid.appspot.com/SetupForAdmin?domain=${DOMAIN_NAME}"/>
+    <Link rel="manage" href="http://yourappid.appspot.com/ConfigureForAdmin?domain=${DOMAIN_NAME}"/>
+    <Link rel="support" href="https://yourappid.appspot.com/support.html"/>
+    <Link rel="deletion-policy" href="https://yourappid.appspot.com/deletion-policy.html"/>
+  </Support>
+  
+  <Name>yourappname</Name>
+  <Description>The example of application using gdata-api on appengine.</Description>
+  
+  <Extension id="navLink" type="link">
+    <Name>yourappname</Name>
+    <Url>http://yourappid.appspot.com/TopPage?domain=${DOMAIN_NAME}</Url>
+    <Scope ref="scope_calendar"/>
+    <Scope ref="scope_contacts"/>
+    <Scope ref="scope_sites"/>
+    <Scope ref="scope_docs"/>
+    <Scope ref="scope_mail_atom"/>
+    <Scope ref="scope_spreadsheet"/>
+    
+    <Scope ref="scope_mail"/>
+    <Scope ref="scope_arbitrary_docs"/>
+    <Scope ref="scope_finance"/>
+    
+    <Scope ref="scope_calendar_resource"/>
+    <Scope ref="scope_provisioning_user"/>
+    <Scope ref="scope_provisioning_nickname"/>
+    <Scope ref="scope_provisioning_group"/>
+  </Extension>
+  
+  <Extension id="realm" type="openIdRealm">
+    <Url>http://yourappid.appspot.com</Url>
+  </Extension>
+  
+  <!-- Scopes -->
+  <Scope id="scope_calendar">
+    <Url>https://www.google.com/calendar/feeds/</Url>
+    <Reason>This application use Calendar Data API.</Reason>
+  </Scope>
+  <Scope id="scope_contacts">
+    <Url>https://www.google.com/m8/feeds/</Url>
+    <Reason>This application use user's Contacts Data API.</Reason>
+  </Scope>
+  <Scope id="scope_sites">
+    <Url>https://sites.google.com/feeds/</Url>
+    <Reason>This application use Google Sites Data API.</Reason>
+  </Scope>
+  <Scope id="scope_docs">
+    <Url>https://docs.google.com/feeds/</Url>
+    <Reason>This application use Documents List Data API.</Reason>
+  </Scope>
+  <Scope id="scope_mail_atom">
+    <Url>https://mail.google.com/mail/feed/atom/</Url>
+    <Reason>This application use Gmail Atom feed.</Reason>
+  </Scope>
+  <Scope id="scope_spreadsheet">
+    <Url>https://spreadsheets.google.com/feeds/</Url>
+    <Reason>This application use Spreadsheets Data API.</Reason>
+  </Scope>
+  
+  <Scope id="scope_mail">
+    <Url>https://mail.google.com/</Url>
+    <Reason>This application use Gmail IMAP/SMTP Access.</Reason>
+  </Scope>
+  <Scope id="scope_arbitrary_docs">
+    <Url>https://docs.googleusercontent.com/</Url>
+    <Reason>This application use Download PDFs and arbitrary files from Docs Access.</Reason>
+  </Scope>
+  <Scope id="scope_finance">
+    <Url>https://www.google.com/finance/feeds/</Url>
+    <Reason>This application use Download PDFs and arbitrary files from Docs Access.</Reason>
+  </Scope>
+  
+  <!-- provisioning api -->
+  <Scope id="scope_calendar_resource">
+    <Url>https://apps-apis.google.com/a/feeds/calendar/resource/#readonly</Url>
+    <Reason>This application use calendar resource.</Reason>
+  </Scope>
+  <Scope id="scope_provisioning_user">
+    <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
+    <Reason>This application use user information.</Reason>
+  </Scope>
+  <Scope id="scope_provisioning_nickname">
+    <Url>https://apps-apis.google.com/a/feeds/nickname/#readonly</Url>
+    <Reason>This application use user information.</Reason>
+  </Scope>
+  <Scope id="scope_provisioning_group">
+    <Url>https://apps-apis.google.com/a/feeds/group/#readonly</Url>
+    <Reason>This application use group information.</Reason>
+  </Scope>
+  <!--
+  <Scope id="scope_provisioning_orgunit">
+  <Url>https://apps-apis.google.com/a/feeds/orgunit/#readonly</Url>
+  <Reason>This application use organization information.</Reason>
+  </Scope>
+  <Scope id="scope_provisioning_orguser">
+  <Url>https://apps-apis.google.com/a/feeds/orguser/#readonly</Url>
+  <Reason>This application use organization information.</Reason>
+  </Scope>
+  -->
+</ApplicationManifest>
