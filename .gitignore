@@ -1,0 +1,14 @@
+target/**
+build/**
+.apt_generated/**
+war/WEB-INF/appengine-generated/**
+war/WEB-INF/classes/
+war/WEB-INF/lib/
+WEB-INF/**
+.settings/
+.classpath
+.factorypath
+.project
+src/main/resources/marketplace.properties
+eclipse.lib/*.jar
+
