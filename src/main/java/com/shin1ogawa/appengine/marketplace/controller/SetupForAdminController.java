@@ -47,6 +47,13 @@ public class SetupForAdminController extends Controller {
 			callback = sessionScope("callback");
 			removeSessionScope("callback");
 		}
+		if (StringUtils.isEmpty(callback)) {
+			// from 'Addional Setup' in cpanel.
+			callback =
+					"https://www.google.com/a/cpanel/" + domain + "/PikeplaceAppSettings?appId="
+							+ Configuration.get().getMarketplaceAppId()
+							+ "&licenseNamespace=PACKAGE_GAIAID";
+		}
 		if (StringUtils.isEmpty(domain) || StringUtils.isEmpty(callback)) {
 			return redirect(Configuration.get().getMarketplaceListingUrl());
 		}
