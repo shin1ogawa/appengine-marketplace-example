@@ -25,6 +25,7 @@ import com.google.gdata.client.appsforyourdomain.AppsPropertyService;
 import com.google.gdata.client.authn.oauth.GoogleOAuthParameters;
 import com.google.gdata.client.authn.oauth.OAuthException;
 import com.google.gdata.client.authn.oauth.OAuthHmacSha1Signer;
+import com.google.gdata.client.authn.oauth.OAuthParameters.OAuthType;
 import com.google.gdata.data.DateTime;
 import com.shin1ogawa.appengine.marketplace.gdata.GDataAPIUtil.GDataAPIException;
 
@@ -56,6 +57,7 @@ public class LicensingAPI {
 		this.oauthParams = new GoogleOAuthParameters();
 		oauthParams.setOAuthConsumerKey(consumerKey);
 		oauthParams.setOAuthConsumerSecret(consumerSecret);
+		oauthParams.setOAuthType(OAuthType.TWO_LEGGED_OAUTH);
 	}
 
 	/**
@@ -79,6 +81,7 @@ public class LicensingAPI {
 							+ EQUAL + domain + CLOSE_BRACE;
 			AppsPropertyService service =
 					new AppsPropertyService(GDataAPIUtil.getApplicationName());
+			service.setOAuthCredentials(oauthParams, new OAuthHmacSha1Signer());
 			List<Map<String, String>> states =
 					parseLicenseFeed(GDataAPIUtil.getXmlWithRetry(service, new URL(url)));
 			if (Iterables.size(states) != 1) {
@@ -92,6 +95,8 @@ public class LicensingAPI {
 		} catch (IOException e) {
 			throw new GDataAPIUtil.GDataAPIException(e);
 		} catch (ParserConfigurationException e) {
+			throw new GDataAPIUtil.GDataAPIException(e);
+		} catch (OAuthException e) {
 			throw new GDataAPIUtil.GDataAPIException(e);
 		}
 	}
