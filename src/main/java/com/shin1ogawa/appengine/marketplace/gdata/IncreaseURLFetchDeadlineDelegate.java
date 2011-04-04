@@ -1,5 +1,6 @@
 package com.shin1ogawa.appengine.marketplace.gdata;
 
+import java.util.List;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,11 +60,6 @@ public class IncreaseURLFetchDeadlineDelegate implements ApiProxy.Delegate<Envir
 	}
 
 	@Override
-	public void log(Environment env, LogRecord logRecord) {
-		delegate.log(env, logRecord);
-	}
-
-	@Override
 	public Future<byte[]> makeAsyncCall(Environment env, String service, String method,
 			byte[] requestBytes, ApiConfig config) {
 		if (StringUtils.equalsIgnoreCase("urlfetch", service) == false) {
@@ -107,5 +103,20 @@ public class IncreaseURLFetchDeadlineDelegate implements ApiProxy.Delegate<Envir
 			logger.log(logLevel, "newRequest=" + newRequestPB);
 		}
 		return newRequestBytes;
+	}
+
+	@Override
+	public void log(Environment env, LogRecord logRecord) {
+		delegate.log(env, logRecord);
+	}
+
+	@Override
+	public void flushLogs(Environment env) {
+		delegate.flushLogs(env);
+	}
+
+	@Override
+	public List<Thread> getRequestThreads(Environment env) {
+		return delegate.getRequestThreads(env);
 	}
 }
