@@ -63,7 +63,8 @@ public class SetupForAdminController extends Controller {
 			String callbackURL = request.getRequestURL() + "?domain=" + domain;
 			sessionScope("callback", callback);
 			logger.log(Level.INFO, "had not been authenticated: callback=" + callbackURL);
-			return redirect(us.createLoginURL(callbackURL, null, domain, null));
+			return redirect(us.createLoginURL(callbackURL, domain,
+					"https://www.google.com/accounts/o8/site-xrds?hd=" + domain, null));
 		}
 		if (StringUtils.contains(us.getCurrentUser().getFederatedIdentity(), domain) == false) {
 			// if user had been authenticated but invalid domain then send redirect to logout url.
@@ -101,10 +102,8 @@ public class SetupForAdminController extends Controller {
 		w.println("<meta http-equiv=\"refresh\" content=\"5 ; URL=" + callback + "\">");
 		w.println("<title>appengine-gdata-example</title></head><body>");
 		w.println("<h1>appengine-gdata-example</h1>");
-		w
-			.println("<p>from 'Add it now(3 External configuration)' at makretplace listing page.</p>");
-		w
-			.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/SetupForAdminController.java\">");
+		w.println("<p>from 'Add it now(3 External configuration)' at makretplace listing page.</p>");
+		w.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/SetupForAdminController.java\">");
 		w.println("source code</a></p>");
 		w.print("<p>completed successfully. <a href=\"");
 		w.print(callback);

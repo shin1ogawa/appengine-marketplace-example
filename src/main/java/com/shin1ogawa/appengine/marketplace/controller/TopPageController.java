@@ -50,7 +50,8 @@ public class TopPageController extends Controller {
 			// if user had not been authenticated then send redirect to login url.
 			String callbackURL = request.getRequestURL() + "?domain=" + domain;
 			logger.log(Level.INFO, "had not been authenticated: callback=" + callbackURL);
-			return redirect(us.createLoginURL(callbackURL, null, domain, null));
+			return redirect(us.createLoginURL(callbackURL, domain,
+					"https://www.google.com/accounts/o8/site-xrds?hd=" + domain, null));
 		} else {
 			if (StringUtils.isEmpty(domain)) {
 				String id = currentUser.getFederatedIdentity();
@@ -96,8 +97,7 @@ public class TopPageController extends Controller {
 		w.println("<html><head><title>appengine-gdata-example</title></head><body>");
 		w.println("<h1>appengine-gdata-example</h1>");
 		w.println("<p>from universal navigation</p>");
-		w
-			.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/TopPageController.java\">");
+		w.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/TopPageController.java\">");
 		w.println("source code</a></p>");
 		w.println(Utils.getHtmlForDebug(request));
 		w.println("</body></html>");

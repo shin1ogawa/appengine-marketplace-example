@@ -43,7 +43,8 @@ public class ConfigureForAdminController extends Controller {
 			// if user had not been authenticated then send redirect to login url.
 			String callbackURL = request.getRequestURL() + "?domain=" + domain;
 			logger.log(Level.INFO, "had not been authenticated: callback=" + callbackURL);
-			return redirect(us.createLoginURL(callbackURL, null, domain, null));
+			return redirect(us.createLoginURL(callbackURL, domain,
+					"https://www.google.com/accounts/o8/site-xrds?hd=" + domain, null));
 		}
 		if (StringUtils.contains(us.getCurrentUser().getFederatedIdentity(), domain) == false) {
 			// if user had been authenticated but invalid domain then send redirect to logout url.
@@ -64,8 +65,7 @@ public class ConfigureForAdminController extends Controller {
 		w.println("<html><head><title>appengine-gdata-example</title></head><body>");
 		w.println("<h1>appengine-gdata-example</h1>");
 		w.println("<p>from 'Additional Configuration' at cpanel</p>");
-		w
-			.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/ConfigureForAdminController.java\">");
+		w.println("<p><a target=\"_blank\" href=\"http://github.com/shin1ogawa/appengine-marketplace-example/blob/master/src/main/java/com/shin1ogawa/appengine/marketplace/controller/ConfigureForAdminController.java\">");
 		w.println("source code</a></p>");
 		w.println(Utils.getHtmlForDebug(request));
 		w.print("<a href=\"https://www.google.com/a/cpanel/");
